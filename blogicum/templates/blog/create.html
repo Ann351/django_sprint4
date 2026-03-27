@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{% if form.instance.id %}Редактирование поста{% else %}Создание поста{% endif %}{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>{% if form.instance.id %}Редактирование поста{% else %}Создание поста{% endif %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+    {% if form.instance.id %}
+      <a href="{% url 'blog:delete_post' form.instance.id %}" class="btn btn-danger">Удалить</a>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}
