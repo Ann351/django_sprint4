@@ -5,8 +5,7 @@ from .models import Post, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'text', 'image', 'pub_date',
-                  'location', 'category', 'is_published']
+        fields = ['title', 'text', 'image', 'pub_date', 'location', 'category', 'is_published']
         widgets = {
             'pub_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
@@ -17,7 +16,5 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text']
         widgets = {
-            'text': forms.Textarea(
-                attrs={'rows': 3, 'placeholder': 'Ваш комментарий...'}
-            ),
+            'text': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Ваш комментарий...'}),
         }
